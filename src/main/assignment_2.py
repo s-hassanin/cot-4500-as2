@@ -1,4 +1,3 @@
-
 import numpy as np
 
 def neville(x_data, y_data, x):
@@ -14,16 +13,14 @@ def neville(x_data, y_data, x):
 
 
 # -----------------------------------------
-
-
-def u_cal(u, n):
+def calculate(u, n):
 
   temp = u
   for i in range(1, n):
     temp = temp * (u - i)
   return temp
 
-def fact(n):
+def factorial(n):
   f = 1
   for i in range(2, n + 1):
     f *= i
@@ -42,10 +39,9 @@ def newton_forward(x_data, y_data, approx):
   sum = matrix[0][0]
   u = (approx - x_data[0]) / (x_data[1] - x_data[0])
   for i in range(1, len(x_data)):
-    sum = sum + (u_cal(u, i) * matrix[0][i]) / fact(i)
+    sum = sum + (calculate(u, i) * matrix[0][i]) / factorial(i)
   
   print(round(sum, 6))
-
 
 #-------------------------------------------------
 def hermite_approximation_matrix(x, fx, fdx):
